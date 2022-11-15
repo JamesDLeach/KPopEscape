@@ -29,6 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6140289324153190976}
   m_Father: {fileID: 0}
@@ -53,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -125,6 +127,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.71989447, y: 1.6071602, z: -0.8856343}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6632985880181523678}
   m_Father: {fileID: 626389565930916310}
@@ -149,6 +152,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -192,7 +196,7 @@ GameObject:
   - component: {fileID: 8351773750616658741}
   - component: {fileID: 8937194994734492049}
   - component: {fileID: 5810124454693124630}
-  - component: {fileID: 8412839811700327940}
+  - component: {fileID: 1763275689227295584}
   m_Layer: 0
   m_Name: BP_BR_Stall_01_Door
   m_TagString: Untagged
@@ -210,6 +214,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.031814814, y: -0.109840676, z: -0.24312323}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7270313756699337777}
   m_Father: {fileID: 6140289324153190976}
@@ -234,6 +239,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -279,7 +285,7 @@ BoxCollider:
   m_Center: {x: -0.027234826, y: -0.00000011920929, z: 0.41929153}
 --- !u!95 &5810124454693124630
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -292,11 +298,12 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8412839811700327940
+--- !u!114 &1763275689227295584
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -305,12 +312,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 5588216977696226266}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b697b9be3c8d9534ebd171d2b41d6f4f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e8192f35a44301488ec0f072d9a16fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  openandclose: {fileID: 5810124454693124630}
-  open: 0
-  Player: {fileID: 0}
+  animator: {fileID: 5810124454693124630}
+  openingAnimation: OpeningStall
+  closingAnimation: ClosingStall
+  lockedAnimation: 
+  isOpen: 0
+  isLocked: 0
+  openingMessege: 
+  closingMessage: 
+  lockedMessage: 
 --- !u!1 &7242036155052404456
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,6 +352,7 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.015962422, y: -0.24801733, z: 0.76505405}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6632985880181523678}
   m_RootOrder: 0
@@ -362,6 +376,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
