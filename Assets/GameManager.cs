@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     public static event GameEvent GameStart, GameOver, GameStateChange;
 
     private static GameManager _instance;
+    private static InputManager _inputManager;
 
     public static GameManager Instance
     {
@@ -24,10 +25,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public static InputManager InputManager
+    {
+        get
+        {
+            if (_inputManager is null)
+            {
+                Debug.LogError("InputManager is NULL");
+            }
+            return _inputManager;
+        }
+    }
+
     private void Awake()
     {
         DontDestroyOnLoad(this);
         _instance = this;
+        _inputManager = GetComponent<InputManager>();
     }
 
     private void Start()
