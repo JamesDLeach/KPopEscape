@@ -40,6 +40,11 @@ namespace SojaExiles
             lockedMessage = lockedMessage == "" ? "This door is locked." : lockedMessage;
         }
 
+        public void unlock()
+        {
+            isLocked = false;
+        }
+
         void OnMouseOver()
         {
             float dist = Vector3.Distance(GameManager.Instance.player.transform.position, transform.position);
@@ -91,6 +96,5 @@ namespace SojaExiles
             print(lockedMessage);
             yield return new WaitForSeconds(.5f);
         }
-
     }
 }
