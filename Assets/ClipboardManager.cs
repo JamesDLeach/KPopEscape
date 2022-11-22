@@ -12,10 +12,12 @@ public class ClipboardManager : MonoBehaviour
     private bool isClicked;
     private Vector3 oldPos;
     private Quaternion oldRotation;
+    private Collider collider;
 
     // Start is called before the first frame update
     void Start()
     {
+        collider = collider == null ? GetComponent<Collider>() : collider;
         text = text == null ? GetComponentInChildren<TextMeshPro>() : text;
         isClicked = false;
     }
@@ -38,6 +40,7 @@ public class ClipboardManager : MonoBehaviour
         isClicked = true;
         oldPos = transform.position;
         oldRotation = transform.rotation;
+        collider.enabled = false;
     }
 
     private void EndLook()
@@ -45,11 +48,13 @@ public class ClipboardManager : MonoBehaviour
         isClicked = false;
         transform.position = oldPos;
         transform.rotation = oldRotation;
+        collider.enabled = true;
     }
 
     private void LookAtCamera()
     {
-        transform.position = Camera.main.transform.position + (cameraDist * Camera.main.transform.forward);
+        Vector3 targetPos = Camera.main.transform.position + (cameraDist * Camera.main.transform.forward);
+        transform.position = Vector3.MoveTowards(transform.position, targetPos, Mathf.Clamp(Time.deltaTime * 5, 0, 1));
         transform.LookAt(Camera.main.transform.position);
         transform.rotation *= Quaternion.Euler(90, 0, 0);
     }
