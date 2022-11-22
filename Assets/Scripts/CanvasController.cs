@@ -32,7 +32,7 @@ public class CanvasController : MonoBehaviour
         playerText.SetText("");
     }
 
-    IEnumerable wingame()
+    IEnumerator wingame()
     {
         GameManager.Instance.player.GetComponent<CharacterController>().enabled = false;
         winner.SetActive(true);
