@@ -23,11 +23,12 @@ public class WindowTeleporter : MonoBehaviour
         if (dist >= 5) return;
         Debug.Log("Over Object");
         if (Input.GetMouseButtonDown(0)) {
-                GameManager.Instance.player.GetComponent<CharacterController>().enabled = false;
-                GameManager.Instance.player.GetComponent<CanvasController>().updatedText(teleportMessage);
-                GameManager.Instance.player.transform.position = exit.transform.position;
-                GameManager.Instance.player.GetComponent<CharacterController>().enabled = true;
-                Debug.Log("Attempted Teleport");
+            GameManager.Instance.player.GetComponent<CharacterController>().enabled = false;
+            GameManager.Instance.player.GetComponent<CanvasController>().updatedText(teleportMessage);
+            GameManager.Instance.player.transform.position = exit.transform.position;
+            GameManager.Instance.player.transform.rotation = exit.transform.rotation;
+            GameManager.Instance.player.GetComponent<CharacterController>().enabled = true;
+            Debug.Log("Attempted Teleport");
         }
     }
     
