@@ -9,7 +9,7 @@ namespace SojaExiles
     {
         //Door key is to unlock
         public GameObject linkedDoor;
-
+        public string lockText;
         void OnMouseOver()
         {
             float dist = Vector3.Distance(GameManager.Instance.player.transform.position, transform.position);
@@ -22,6 +22,7 @@ namespace SojaExiles
             {
                 Debug.Log("The box, you opened it, we came.");
                 linkedDoor.GetComponent<opencloseDoor>().unlock();
+                GameManager.Instance.player.GetComponent<CanvasController>().updatedText(lockText);
                 Destroy(gameObject);
             }
         }
