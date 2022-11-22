@@ -7,6 +7,7 @@ public class WindowTeleporter : MonoBehaviour
     public bool isLocked;
     public GameObject planks;
     public GameObject exit;
+    public string teleportMessage;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +24,10 @@ public class WindowTeleporter : MonoBehaviour
         if (Input.GetMouseButtonDown(0)) {
 
             if (!isLocked) {
-                GameManager.Instance.player.GetComponent<CanvasController>().updatedText("An open window, I think I can get out here");
+                GameManager.Instance.player.GetComponent<CharacterController>().enabled = false;
+                GameManager.Instance.player.GetComponent<CanvasController>().updatedText(teleportMessage);
                 GameManager.Instance.player.transform.position = exit.transform.position;
+                GameManager.Instance.player.GetComponent<CharacterController>().enabled = true;
             } else {
                 GameManager.Instance.player.GetComponent<CanvasController>().updatedText("");
             }
