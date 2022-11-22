@@ -94,7 +94,9 @@ namespace SojaExiles
         IEnumerator locked()
         {
             print(lockedMessage);
-            yield return new WaitForSeconds(.5f);
+            GameManager.Instance.player.GetComponent<TMPro.TextMeshProUGUI>().SetText("This door is locked, I'll need a key");
+            yield return new WaitForSeconds(2.5f);
+            GameManager.Instance.player.GetComponent<TMPro.TextMeshProUGUI>().SetText("");
         }
     }
 }
