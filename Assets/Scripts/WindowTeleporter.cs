@@ -18,20 +18,16 @@ public class WindowTeleporter : MonoBehaviour
     }
     void OnMouseOver()
     {
+        if (isLocked) return;
         float dist = Vector3.Distance(GameManager.Instance.player.transform.position, transform.position);
         if (dist >= 5) return;
-
+        Debug.Log("Over Object");
         if (Input.GetMouseButtonDown(0)) {
-
-            if (!isLocked) {
                 GameManager.Instance.player.GetComponent<CharacterController>().enabled = false;
                 GameManager.Instance.player.GetComponent<CanvasController>().updatedText(teleportMessage);
                 GameManager.Instance.player.transform.position = exit.transform.position;
                 GameManager.Instance.player.GetComponent<CharacterController>().enabled = true;
-            } else {
-                GameManager.Instance.player.GetComponent<CanvasController>().updatedText("");
-            }
-
+                Debug.Log("Attempted Teleport");
         }
     }
     
