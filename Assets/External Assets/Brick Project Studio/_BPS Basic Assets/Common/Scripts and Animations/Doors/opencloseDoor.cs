@@ -16,6 +16,9 @@ namespace SojaExiles
         public string openingMessege;
         public string closingMessage;
         public string lockedMessage;
+        public AudioSource aSource;
+        public AudioClip openclick;
+        public AudioClip lockedClick;
 
         void Start()
         {
@@ -80,6 +83,7 @@ namespace SojaExiles
             print(openingMessege);
             animator.Play(openingAnimation);
             isOpen = true;
+            aSource.PlayOneShot(openclick);
             yield return new WaitForSeconds(.5f);
         }
 
@@ -88,6 +92,7 @@ namespace SojaExiles
             print(closingMessage);
             animator.Play(closingAnimation);
             isOpen = false;
+            aSource.PlayOneShot(openclick);
             yield return new WaitForSeconds(.5f);
         }
 
@@ -95,6 +100,7 @@ namespace SojaExiles
         {
             print(lockedMessage);
             GameManager.Instance.player.GetComponent<CanvasController>().updatedText(lockedMessage);
+            aSource.PlayOneShot(lockedClick);
             yield return new WaitForSeconds(2.5f);
         }
     }

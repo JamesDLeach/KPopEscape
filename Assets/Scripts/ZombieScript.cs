@@ -7,14 +7,27 @@ public class ZombieScript : MonoBehaviour
 
     public float speed;
     public float maxDist;
+    public AudioSource aSource;
+    public AudioClip moans;
 
     private Animator animator;
     private CharacterController characterController;
 
     void Start()
     {
+        StartCoroutine(WaitRand());
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
+        
+    }
+
+    IEnumerator WaitRand()
+    {
+        float rand = Random.Range(0, 4.0f);
+        yield return new WaitForSeconds(rand);
+        aSource.clip = moans;
+        aSource.loop = true;
+        aSource.Play();
     }
 
     // Update is called once per frame
