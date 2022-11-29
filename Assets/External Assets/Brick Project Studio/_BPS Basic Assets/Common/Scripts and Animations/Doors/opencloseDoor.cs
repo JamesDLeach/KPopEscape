@@ -41,6 +41,7 @@ namespace SojaExiles
             openingMessege = openingMessege == "" ? "You are opening the door." : openingMessege;
             closingMessage = closingMessage == "" ? "You are closing the door." : closingMessage;
             lockedMessage = lockedMessage == "" ? "This door is locked." : lockedMessage;
+            aSource.volume = .33f;
         }
 
         public void unlock()
