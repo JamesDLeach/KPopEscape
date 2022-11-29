@@ -60,6 +60,7 @@ public class CanvasController : MonoBehaviour
         fridgePuzzleUI.SetActive(true);
         Debug.Log("Tried to set active");
         mainInputField.ActivateInputField();
+        Cursor.lockState = CursorLockMode.Confined;
         yield return new WaitForSeconds(.5f);
     }
 
@@ -78,6 +79,7 @@ public class CanvasController : MonoBehaviour
             GameManager.Instance.player.GetComponent<CanvasController>().updatedText("This doesn't seem like the right shaped magnet");
         }
         GameManager.Instance.player.GetComponent<CharacterController>().enabled = true;
+        Cursor.lockState = CursorLockMode.Locked;
         fridgePuzzleUI.SetActive(false);
         yield return new WaitForSeconds(.5f);
     }

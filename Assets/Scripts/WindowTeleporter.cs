@@ -12,12 +12,12 @@ public class WindowTeleporter : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(!isLocked)
+        if (!isLocked)
         {
             Destroy(planks);
         }
     }
-    void OnMouseOver()
+    void OnMouseDown()
     {
         float dist = Vector3.Distance(GameManager.Instance.player.transform.position, transform.position);
         if (dist >= 5) return;
@@ -26,18 +26,17 @@ public class WindowTeleporter : MonoBehaviour
             GameManager.Instance.player.GetComponent<CanvasController>().updatedText(pathMessage);
             return;
         }
-        Debug.Log("Over Object");
-        if (Input.GetMouseButtonDown(0)) {
-            GameManager.Instance.player.GetComponent<CharacterController>().enabled = false;
-            GameManager.Instance.player.GetComponent<CanvasController>().updatedText(teleportMessage);
-            GameManager.Instance.player.transform.position = exit.transform.position;
-            GameManager.Instance.player.transform.rotation = exit.transform.rotation;
-            GameManager.Instance.player.GetComponent<CharacterController>().enabled = true;
-            Debug.Log("Attempted Teleport");
-        }
+
+        GameManager.Instance.player.GetComponent<CharacterController>().enabled = false;
+        GameManager.CanvasController.updatedText(teleportMessage);
+        GameManager.Instance.player.transform.position = exit.transform.position;
+        GameManager.Instance.player.transform.rotation = exit.transform.rotation;
+        GameManager.Instance.player.GetComponent<CharacterController>().enabled = true;
+        Debug.Log("Attempted Teleport");
     }
 
-    public void unlock() {
+    public void unlock()
+    {
         Destroy(planks);
         isLocked = false;
     }

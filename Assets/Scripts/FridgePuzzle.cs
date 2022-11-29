@@ -8,18 +8,16 @@ namespace SojaExiles
     {
         public GameObject linkedLock;
         public string fridgeText;
-        void OnMouseOver()
+
+        private void OnMouseDown()
         {
             float dist = Vector3.Distance(GameManager.Instance.player.transform.position, transform.position);
             if (dist >= 3)
             {
                 return;
-            } 
-            if (Input.GetMouseButtonDown(0))
-            {
-                GameManager.Instance.player.GetComponent<CanvasController>().updatedText(fridgeText);
-                GameManager.Instance.player.GetComponent<CanvasController>().fridgeTrigger();
             }
+            GameManager.CanvasController.updatedText(fridgeText);
+            GameManager.CanvasController.fridgeTrigger();
         }
     }
 }

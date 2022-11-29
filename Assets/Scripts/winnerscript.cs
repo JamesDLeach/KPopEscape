@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class winnerscript : MonoBehaviour
 {
-    void OnMouseOver()
+    void OnMouseDown()
     {
         float dist = Vector3.Distance(GameManager.Instance.player.transform.position, transform.position);
         if (dist >= 10) return;
-
-        if (Input.GetMouseButtonDown(0))
-        {
-            GameManager.Instance.player.GetComponent<CanvasController>().winnerTrigger();
-        }
+        GameManager.Instance.player.GetComponent<CanvasController>().winnerTrigger();
     }
 }

@@ -18,7 +18,6 @@ public class ZombieScript : MonoBehaviour
         StartCoroutine(WaitRand());
         animator = GetComponent<Animator>();
         characterController = GetComponent<CharacterController>();
-        
     }
 
     IEnumerator WaitRand()

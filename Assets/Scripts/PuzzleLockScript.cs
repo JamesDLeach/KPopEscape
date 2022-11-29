@@ -13,7 +13,7 @@ namespace SojaExiles
         public AudioClip padlocked;
         public AudioClip clickOpen;
 
-        void OnMouseOver()
+        private void OnMouseDown()
         {
             float dist = Vector3.Distance(GameManager.Instance.player.transform.position, transform.position);
             if (dist >= 5)
@@ -21,22 +21,19 @@ namespace SojaExiles
                 Debug.Log("Too Far for key");
                 return;
             }
-
-            if (Input.GetMouseButtonDown(0))
+            if (!GameManager.CanvasController.solvedFridge)
             {
-                if (!GameManager.Instance.player.GetComponent<CanvasController>().solvedFridge)
-                {
-                    aSource.PlayOneShot(padlocked);
-                    GameManager.Instance.player.GetComponent<CanvasController>().updatedText(lockText);
-                }
-                else
-                {
-                    aSource.PlayOneShot(clickOpen);
-                    unlockDoor();
-                    Destroy(this);
-                }
+                aSource.PlayOneShot(padlocked);
+                GameManager.CanvasController.updatedText(lockText);
+            }
+            else
+            {
+                aSource.PlayOneShot(clickOpen);
+                unlockDoor();
+                Destroy(this);
             }
         }
+
         public void unlockDoor()
         {
             linkedDoor.GetComponent<opencloseDoor>().unlock();

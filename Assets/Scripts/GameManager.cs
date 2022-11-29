@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
 
     private static GameManager _instance;
     private static InputManager _inputManager;
+    private static CanvasController _canvasController;
 
     public static GameManager Instance
     {
@@ -36,12 +37,24 @@ public class GameManager : MonoBehaviour
             return _inputManager;
         }
     }
+    public static CanvasController CanvasController
+    {
+        get
+        {
+            if (_canvasController is null)
+            {
+                Debug.LogError("CanvasController is NULL");
+            }
+            return _canvasController;
+        }
+    }
 
     private void Awake()
     {
         DontDestroyOnLoad(this);
         _instance = this;
         _inputManager = GetComponent<InputManager>();
+        _canvasController = player.GetComponent<CanvasController>();
     }
 
     private void Start()

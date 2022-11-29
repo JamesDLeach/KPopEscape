@@ -142,7 +142,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 0.09
   m_Range: 0.2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -261,7 +261,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkedDoor: {fileID: 0}
   lockText: A lock, looks like it can fit something inside
-  solvedPuzzle: 0
   aSource: {fileID: 6948896867451762911}
   padlocked: {fileID: 8300000, guid: 98c50ca04785fe648b80682850fb33d1, type: 3}
   clickOpen: {fileID: 8300000, guid: cce3b78ecbf79f54d9b3464c9f2adf03, type: 3}

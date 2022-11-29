@@ -10,7 +10,7 @@ namespace SojaExiles
         //Door key is to unlock
         public GameObject linkedDoor;
         public string lockText;
-        void OnMouseOver()
+        void OnMouseDown()
         {
             float dist = Vector3.Distance(GameManager.Instance.player.transform.position, transform.position);
             if (dist >= 5)
@@ -18,13 +18,11 @@ namespace SojaExiles
                 Debug.Log("Too Far for key");
                 return;
             }
-            if (Input.GetMouseButtonDown(0))
-            {
-                Debug.Log("The box, you opened it, we came.");
-                linkedDoor.GetComponent<opencloseDoor>().unlock();
-                GameManager.Instance.player.GetComponent<CanvasController>().updatedText(lockText);
-                Destroy(gameObject);
-            }
+
+            Debug.Log("The box, you opened it, we came.");
+            linkedDoor.GetComponent<opencloseDoor>().unlock();
+            GameManager.CanvasController.updatedText(lockText);
+            Destroy(gameObject);
         }
     }
 }
