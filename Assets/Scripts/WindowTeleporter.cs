@@ -8,6 +8,7 @@ public class WindowTeleporter : MonoBehaviour
     public GameObject planks;
     public GameObject exit;
     public string teleportMessage;
+    public string pathMessage;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,9 +19,13 @@ public class WindowTeleporter : MonoBehaviour
     }
     void OnMouseOver()
     {
-        if (isLocked) return;
         float dist = Vector3.Distance(GameManager.Instance.player.transform.position, transform.position);
         if (dist >= 5) return;
+        if (isLocked)
+        {
+            GameManager.Instance.player.GetComponent<CanvasController>().updatedText(pathMessage);
+            return;
+        }
         Debug.Log("Over Object");
         if (Input.GetMouseButtonDown(0)) {
             GameManager.Instance.player.GetComponent<CharacterController>().enabled = false;
@@ -31,7 +36,9 @@ public class WindowTeleporter : MonoBehaviour
             Debug.Log("Attempted Teleport");
         }
     }
-    
-    // Update is called once per frame
-    void Update() {}
+
+    public void unlock() {
+        Destroy(planks);
+        isLocked = false;
+    }
 }
