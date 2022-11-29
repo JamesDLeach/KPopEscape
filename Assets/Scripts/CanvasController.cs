@@ -30,16 +30,6 @@ public class CanvasController : MonoBehaviour
         StartCoroutine(wingame());
     }
 
-    public void fridgeTrigger()
-    {
-        StartCoroutine(fridgeGame());
-    }
-
-    public void fridgeEnd()
-    {
-        StartCoroutine(fridgeCheck());
-    }
-
     IEnumerator refreshText(string input)
     {
         playerText.SetText(input);
@@ -52,35 +42,5 @@ public class CanvasController : MonoBehaviour
         GameManager.Instance.player.GetComponent<CharacterController>().enabled = false;
         winner.SetActive(true);
         yield return new WaitForSeconds(3.5f);
-    }
-
-    IEnumerator fridgeGame()
-    {
-        GameManager.Instance.player.GetComponent<CharacterController>().enabled = false;
-        fridgePuzzleUI.SetActive(true);
-        Debug.Log("Tried to set active");
-        mainInputField.ActivateInputField();
-        Cursor.lockState = CursorLockMode.Confined;
-        yield return new WaitForSeconds(.5f);
-    }
-
-    IEnumerator fridgeCheck()
-    {
-        mainInputField.DeactivateInputField();
-        string s = mainInputField.text;
-        s.ToLower();
-        if(s[0].Equals('e'))
-        {
-            GameManager.Instance.player.GetComponent<CanvasController>().updatedText("This seems like it will fit");
-            solvedFridge = true;
-
-        } else
-        {
-            GameManager.Instance.player.GetComponent<CanvasController>().updatedText("This doesn't seem like the right shaped magnet");
-        }
-        GameManager.Instance.player.GetComponent<CharacterController>().enabled = true;
-        Cursor.lockState = CursorLockMode.Locked;
-        fridgePuzzleUI.SetActive(false);
-        yield return new WaitForSeconds(.5f);
     }
 }

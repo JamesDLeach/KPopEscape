@@ -264,6 +264,8 @@ MonoBehaviour:
   aSource: {fileID: 6948896867451762911}
   padlocked: {fileID: 8300000, guid: 98c50ca04785fe648b80682850fb33d1, type: 3}
   clickOpen: {fileID: 8300000, guid: cce3b78ecbf79f54d9b3464c9f2adf03, type: 3}
+  isLocked: 0
+  lockframe: {fileID: 432098306408113408}
 --- !u!1 &3360948601159047920
 GameObject:
   m_ObjectHideFlags: 0

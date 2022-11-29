@@ -12,6 +12,13 @@ namespace SojaExiles
         public AudioSource aSource;
         public AudioClip padlocked;
         public AudioClip clickOpen;
+        public bool isLocked;
+        public GameObject lockframe;
+
+        void Start()
+        {
+            isLocked = true;
+        }
 
         private void OnMouseDown()
         {
@@ -21,17 +28,19 @@ namespace SojaExiles
                 Debug.Log("Too Far for key");
                 return;
             }
-            if (!GameManager.CanvasController.solvedFridge)
+            if (isLocked)
             {
                 aSource.PlayOneShot(padlocked);
                 GameManager.CanvasController.updatedText(lockText);
             }
-            else
-            {
-                aSource.PlayOneShot(clickOpen);
-                unlockDoor();
-                Destroy(this);
-            }
+        }
+
+        public void unlock()
+        {
+            isLocked = false;
+            aSource.PlayOneShot(clickOpen);
+            unlockDoor();
+            Destroy(lockframe);
         }
 
         public void unlockDoor()

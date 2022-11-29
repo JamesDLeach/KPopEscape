@@ -17,7 +17,6 @@ namespace SojaExiles
                 return;
             }
             GameManager.CanvasController.updatedText(fridgeText);
-            GameManager.CanvasController.fridgeTrigger();
         }
     }
 }
